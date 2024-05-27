@@ -1,22 +1,19 @@
 services:
   vrising:
     build:
+      tags:
+        - vrising-server:local
       context: .
       args:
         UID: 1001
         GID: 1001
-    environment:
-      - GAME_PORT=27015
-      - QUERY_PORT=27016
-      - FALLBACK_PORT=27017
-      - RCON_PORT=25575
-      - DATA_PATH=/services/appdata/vrising
-    image: vrising-docker
+    image: vrising-docker:local
+    env_file: .env
     user: vrising:vrising
     volumes:
       - steamcmd:/home/vrising/.wine/drive_c/SteamCmd
       - server:/home/vrising/.wine/drive_c/VRisingServer
-      - ${DATA_PATH}:/home/vrising/.wine/drive_c/VRisingData
+      - ${DATA_PATH:-"/appdata/vrising"}:/home/vrising/.wine/drive_c/VRisingData
     ports:
       - ${GAME_PORT}:${GAME_PORT}/udp
       - ${QUERY_PORT}:${QUERY_PORT}/udp

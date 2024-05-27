@@ -7,11 +7,12 @@ xvfb_wine() {
 }
 
 mkdir -p /home/vrising/.wine/drive_c/VRisingData/Settings
-if [ -f settings/ServerGameSettings.json ]; then
+if [ -e settings/ServerGameSettings.json ] && [ ! -e /home/vrising/.wine/drive_c/VRisingData/Settings/ServerGameSettings.json ]; then
   echo "Installing ServerGameSettings..."
   cp settings/ServerGameSettings.json /home/vrising/.wine/drive_c/VRisingData/Settings/ServerGameSettings.json
 fi
-if [ -f settings/ServerHostSettings.json ]; then
+
+if [ -e settings/ServerHostSettings.json ] && [ ! -e /home/vrising/.wine/drive_c/VRisingData/Settings/ServerHostSettings.json ]; then
   echo "Installing ServerHostSettings..."
   cp settings/ServerHostSettings.json /home/vrising/.wine/drive_c/VRisingData/Settings/ServerHostSettings.json
 fi
