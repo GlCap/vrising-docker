@@ -17,8 +17,8 @@ if [ -e settings/ServerHostSettings.json ] && [ ! -e /home/vrising/.wine/drive_c
   cp settings/ServerHostSettings.json /home/vrising/.wine/drive_c/VRisingData/Settings/ServerHostSettings.json
 fi
 
+xvfb_wine winecfg -v win10
 echo "Starting SteamCMD to install/update game..."
-
 xvfb_wine steamcmd.exe +force_install_dir 'C:\VRisingServer' +login anonymous +app_update 1829350 validate +quit
 
 sleep 1
