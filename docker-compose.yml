@@ -7,7 +7,7 @@ services:
       args:
         UID: 1001
         GID: 1001
-    image: vrising-docker:local
+    image: vrising-server:local
     env_file: .env
     user: vrising:vrising
     volumes:
